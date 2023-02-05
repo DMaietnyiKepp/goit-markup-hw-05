@@ -17,7 +17,7 @@
             <nav class="header-navigation">
                 <a href="" class="header-logo link"><span class="header-logo-word">Web</span>Studio</a>
                 <ul class="header-list list">
-                    <li class="header-list-item"><a class="header-link link" href="./index.html">Studio</a></li>
+                    <li class="header-list-item"><a class="header-link link current" href="./index.html">Studio</a></li>
                     <li class="header-list-item"><a class="header-link link" href="./portfolio.html">Portfolio</a></li>
                     <li class="header-list-item"><a class="header-link link" href="">Contacts</a></li>
                 </ul>
@@ -37,7 +37,7 @@
                     Effective Solutions
                     for Your Business
                 </h1>
-                <button class="hero-btn" type="button">Order Service</button>
+                <button data-modal-open class="hero-btn" type="button">Order Service</button>
             </div>
         </section>
         <section class="studio-advantage">
@@ -358,5 +358,13 @@
             </div>
         </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button type="button" class="modal-close" data-modal-close>
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="none"><g clip-path="url(#a)"><path fill="#000" d="M8 .806 7.194 0 4 3.194.806 0 0 .806 3.194 4 0 7.194.806 8 4 4.806 7.194 8 8 7.194 4.806 4 8 .806Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h8v8H0z"/></clipPath></defs></svg>
+            </button>
+        </div>
+    </div>
+    <script src="./js/modal.js"></script>
 </body>
 </html>

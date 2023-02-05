@@ -41,6 +41,8 @@ img {
     --FooterHoverFocusColor: #31D0AA;
     --CustomersMainColor: #8E8F99;
     --CustomersLinkColor: #404BBF;
+    --SlideTextColor: #F4F4FD;
+    --SlideTextBgColor: #4D5AE5;
     --HeroGradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
 }
 
@@ -99,11 +101,29 @@ img {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
-    color: var(--MainTextColor)
+    color: var(--MainTextColor);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-link:is(:hover, :focus) {
     color: var(--HoverFocusColor);
+}
+
+.current {
+    color: #404BBF;
+    position: relative;
+}
+
+.current::after {
+    content: '';
+    position: absolute;
+    top: 42px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--HoverFocusColor);
+
 }
 
 /* .header-address {
@@ -121,11 +141,13 @@ img {
 } */
 
 .address-mail {
-    color: var(--SecondTextColor)
+    color: var(--SecondTextColor);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-tel {
-    color: var(--SecondTextColor)
+    color: var(--SecondTextColor);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-mail:is(:hover, :focus),
@@ -181,6 +203,7 @@ img {
     background: #4D5AE5;
     border-style: none;
     border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-btn:is(:hover, :focus) {
@@ -338,6 +361,7 @@ img {
     align-items: center;
     border-radius: 50%;
     background-color: var(--LogoColor);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .studio-team-icon-link:is(:hover, :focus) {
@@ -380,10 +404,12 @@ img {
     border: 1px solid var(--CustomersMainColor);
     border-radius: 4px;
     color: var(--CustomersMainColor);
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-icon {
     fill: currentColor;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-list-link:is(:hover, :focus) {
@@ -462,6 +488,7 @@ img {
     align-items: center;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-soc-link:is(:hover, :focus) {
@@ -486,13 +513,6 @@ img {
 /* .portfolio-navigation-item {
 } */
 
-.portfolio-btn:is(:hover, :focus) {
-    color: #FFFFFF;
-    background: #404BBF;
-    border: 1px solid #404BBF;
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
-}
-
 .portfolio-btn {
     min-width: 116px;
     height: 48px;
@@ -506,6 +526,17 @@ img {
     background: #F4F4FD;
     border: 1px solid #E7E9FC;
     border-radius: 4px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-btn:is(:hover, :focus) {
+    color: #FFFFFF;
+    background: #404BBF;
+    border: 1px solid #404BBF;
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .btn-small {
@@ -524,10 +555,40 @@ img {
     outline: 1px solid #E7E9FC;
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
     width: calc((100% - 48px) / 3);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-service-item:is(:hover, :focus) {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.portfolio-item-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-item-text-wrap {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    padding-top: 40px;
+    padding-right: 32px;
+    padding-left: 32px;
+    background-color: var(--SlideTextBgColor);
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+.portfolio-item-text {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--SlideTextColor);
+}
+
+.portfolio-service-item:hover .portfolio-item-text-wrap {
+    transform: translateY(0);
 }
 
 .service-text {
@@ -550,4 +611,45 @@ img {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: var(--SecondTextColor)
+}
+
+/*--------------------- MODAL PAGE ---------------------*/
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+}
+
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal {
+    width: 408px;
+    min-height: 576px;
+    padding: 24px;
+    background-color: #FCFCFC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-close {
+    width: 24px;
+    height: 24px;
+    background-color: #E7E9FC;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
 }
